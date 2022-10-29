@@ -1,0 +1,37 @@
+span.badge.bg-danger{
+    background-color: #e34f2f !important;
+    font-family: 'Source Sans Pro';
+    font-weight: normal;
+}
+
+span.badge.bg-info{
+    background-color: #88b3f0 !important;
+}
+
+span.badge {
+    font-family: 'Source Sans Pro';
+    font-weight: normal;
+}
+
+/* .comentario {
+    background-color: #f3f3f3;
+} */
+
+.filaprior {
+    background-color:lightgoldenrodyellow;
+}
+
+.editable {    
+    border: 3px solid #007bff;
+}
+
+.cerrable {
+    background-color: #e34f2f;
+    font-weight: bold;
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+
+.cerrado {
+    background-color: lightgoldenrodyellow;
+    /* border:solid red 2px; */
+}
