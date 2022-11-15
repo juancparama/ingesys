@@ -72,7 +72,7 @@
 
             <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title">Incidencias creadas por trimestre</h3>
+                    <h3 class="card-title">Tipos de incidencias</h3>
                     {{-- <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart">
-                        <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        <canvas id="chartTipo" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                     </div>
                 </div>
             </div>
@@ -97,36 +97,11 @@
     
     </div>
 
-    <?php
-    $t1 = [1,2,3];
-    $t2 = [4,5,6];
-    $t3 = [7,8,9];
-    $t4 = [10,11,12];
-
-    $incit1=0;
-    $incit2=0;
-    $incit3=0;
-    $incit4=0;
-    $i=0;
-
-    foreach ($incidencias as $key => $value) {
-        if (in_array ($value->created_at->format('m'), $t1)) {
-            $incit1++;
-        } elseif (in_array ($value->created_at->format('m'), $t2)) {
-            $incit2++;
-        } elseif (in_array ($value->created_at->format('m'), $t3)) {
-            $incit3++;
-        } else {
-            $incit4++;
-        }
-    }
-    ?>
-
 @stop
 
 @section('css')
 @stop
 
 @section('js')
-    <script defer src="{{url('/assets/js/barchart.js')}}" data-t1="{{$incit1}}" data-t2="{{$incit2}}" data-t3="{{$incit3}}" data-t4="{{$incit4}}"></script>
+    <script defer src="{{url('/assets/js/barchart.js')}}" data-av="{{count($averias)}}" data-ev="{{count($evaluaciones)}}"></script>
 @stop

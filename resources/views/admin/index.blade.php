@@ -43,41 +43,71 @@
         $porcentaje=0;
     }
     ?>
+
+
+    {{-- ======AVISO INCIDENCIAS PENDIENTES========== --}}
     
+    @if (count($sinasignar)>0)
+
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title"><strong>¡Atención!</strong></h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>                
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <p style="display: inline">Tienes un total de </p>
+                                    <h2 style="display: inline"><span class="badge bg-green">{{count($sinasignar)}}</span></h2>
+                                    <p  style="display: inline"> incidencias pendientes de asignar. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    @endif
+    {{-- ======FIN AVISO INCIDENCIAS PENDIENTES========== --}}
+
+
+
+
     <section class="content">
     <div class="container-fluid">
     
     <div class="row">
 
-        {{-- TEST --}}
-
-        @if (count($sinasignar)>0)
-            <div class="row col-12">
-                <blockquote class="quote-info alert-dismissible col-12">
-                    <button type="button" class="close" data-dismiss="quote-info" aria-hidden="true">&times;</button>
-                    {{-- <span class="badge bg-purple">{{count($sinasignar)}}</span> --}}
-                    <h5 id="tip">¡Atención!</h5>
-                    <p><span class="badge bg-purple">{{count($sinasignar)}}</span> incidencias pendientes de asignar. </p>
-                    <p>Tienes un total de <span class="badge bg-purple">{{count($sinasignar)}}</span> incidencias pendientes de asignar.</p>
-                </blockquote>
-            </div>
-        @endif
-        
-        @if (count($sinasignar)>0)
-            <div class="row col-12">
-                <div class="alert alert-info alert-dismissible col-12">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h5><i class="icon fas fa-info"></i> ¡Atención!</h5>
-                    Tienes un total de {{count($sinasignar)}} incidencias pendientes de asignar..
+        <div class="col-lg-4 col-12">
+            <a href="{{route('admin.incidencias')}}">
+                <div class="small-box bg-secondary">
+                    <div class="inner">
+                        <h3>{{(count($averias)+count($evaluaciones))}}</h3>
+                        <p>Total incidencias</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <span class="small-box-footer">Información <i class="fas fa-arrow-circle-right"></i></span>
                 </div>
-            </div>
-        @endif
-
-        {{-- TEST --}}
+            </a>
+        </div>
 
 
-
-        <div class="col-sm-6 col-12">
+        <div class="col-lg-4 col-sm-6 col-12">
             <a href="{{route('admin.pendientes')}}">
                 <div class="small-box bg-info">
                     <div class="inner">
@@ -85,14 +115,14 @@
                         <p>Pendientes de asignar</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fas fa-clipboard-list"></i>
                     </div>
                     <span class="small-box-footer">Ver incidencias <i class="fas fa-arrow-circle-right"></i></span>
                 </div>
             </a>
         </div>
 
-        <div class="col-sm-6 col-12">
+        <div class="col-lg-4 col-sm-6 col-12">
             <a href="{{route('admin.completadas')}}">
                 <div class="small-box @if ($porcentaje>60) bg-success @else bg-danger @endif ">
                 {{-- <div class="small-box"> --}}
@@ -101,113 +131,73 @@
                         <p>Porcentaje incidencias completadas</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fas fa-chart-pie"></i>
                     </div>
                     <span class="small-box-footer">Ver incidencias <i class="fas fa-arrow-circle-right"></i></span>
                 </div>
             </a>
         </div>
 
-        <div class="col-lg-4 col-12">
-            <div class="small-box bg-secondary">
-                <div class="inner">
-                    <h3>{{(count($averias)+count($evaluaciones))}}</h3>
-                    <p>Total incidencias asignadas</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-bag"></i>
-                </div>
-                <a href="{{route('admin.asignadas')}}" class="small-box-footer">Información <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
 
-        <div class="col-lg-4 col-12">
-            <div class="small-box bg-warning">
-                <div class="inner">
-                    <h3>{{count($averias)}}</h3>
-                    <p>Total averías</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">Información <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-    
-        <div class="col-lg-4 col-12">
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>{{count($evaluaciones)}}</h3>
-                    <p>Total evaluaciones</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">Información <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-    
+
+   
     </div>
     
     
     <div class="row">
 
-
-        {{-- https://masteringjs.io/tutorials/chartjs/size --}}
+        
+    {{-- GRÁFICO BAR TIPO --}}
     
-    {{-- GRÁFICO BAR --}}
-    
-    <div class="card col-12 col-lg-6">
+    <div class="card col-12 col-sm-6 col-lg-4">
         <div class="card-header">
-            <h3 class="card-title"><i class="fas fa-chart-bar mr-1"></i>Tipo de incidencias</h3>
+            <h3 class="card-title"><i class="fas fa-chart-bar mr-1"></i>Tipos de incidencias</h3>
         </div>
     
         <div class="card-body">
-            <div class="chart-container p-0">
-                    <canvas id="chTipo" height="300" style="height: 300px;"></canvas>
+            <div class="chart">
+                <canvas id="chartTipo" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
             </div>
         </div>
     </div>
     
-    {{-- FIN GRÁFICO SALES --}}
+    {{-- FIN GRÁFICO BAR --}}
 
     
     {{-- Gráfico WHEEL  --}}
 
 
-    <div class="card col-12 col-lg-6">
-        <div class="card-header">
+    <div class="card col-12 col-sm-6 col-lg-4">
+        <div class="card-header box">
             <h3 class="card-title"><i class="fas fa-chart-pie mr-1"></i>Porcentaje completadas</h3>
         </div>
     
         <div class="card-body">
-            <div class="chart-container p-0" style="width:200px;height:200px;">
-                    {{-- <canvas id="wheel" width="400" height="400"></canvas> --}}
-                    <canvas id="wheel"></canvas>
+            <div class="chart-container p-0" style="margin: 0 auto; height: 300px">
+                    <canvas id="wheel" width="300" height="300"></canvas>
             </div>
         </div>
     </div>
 
-    {{-- FIN Gráfico test  --}}
+    {{-- FIN Gráfico WHEEL  --}}
 
-
-    <div class="col-12 col-lg-8">
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>{{count($sinasignar)}}</h3>
-                <p>Pendientes de asignar</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-bag"></i>
-            </div>
-            <a href="{{route('admin.pendientes')}}" class="small-box-footer">Ver incidencias <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-
-
-
-    {{-- ============= --}}
+        
+    {{-- GRÁFICO BAR TRIMESTRE --}}
     
+    <div class="card col-12 col-lg-4">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fas fa-chart-bar mr-1"></i>Incidencias creadas por trimestre</h3>
+        </div>
+    
+        <div class="card-body">
+            <div class="chart-container p-0">
+                    <canvas id="barChart" height="300" style="height: 300px;"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    {{-- FIN GRÁFICO BAR --}}
+
 
     
     </div>
@@ -219,156 +209,33 @@
     </div>
 
 
-    {{-- ================== --}}
+    <?php
+    $t1 = [1,2,3];
+    $t2 = [4,5,6];
+    $t3 = [7,8,9];
+    $t4 = [10,11,12];
 
+    $incit1 = $incit2 = $incit3 = $incit4=0;
+    $evast1 = $evast2 = $evast3 = $evast4=0;
+    $i=0;
 
-
-    <div class="wrapper">
-
-        
-        <section class="content">
-        <div class="container-fluid">
-        <div class="row">
-        <div class="col-md-4">
-        
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Area Chart</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="chart">
-                    {{-- <canvas id="chPercent" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> --}}
-                </div>
-            </div>
-        </div>
-        
-        
-        <div class="card card-danger">
-        <div class="card-header">
-        <h3 class="card-title">Donut Chart</h3>
-        <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-        <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove">
-        <i class="fas fa-times"></i>
-        </button>
-        </div>
-        </div>
-        <div class="card-body">
-        {{-- <canvas id="chPercent" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> --}}
-        </div>
-        
-        </div>
-        
-        
-        <div class="card card-danger">
-        <div class="card-header">
-        <h3 class="card-title">Pie Chart</h3>
-        <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-        <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove">
-        <i class="fas fa-times"></i>
-        </button>
-        </div>
-        </div>
-        <div class="card-body">
-        {{-- <canvas id="chPercent" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> --}}
-        </div>
-        
-        </div>
-        
-        </div>
-        
-        <div class="col-md-4">
-        
-        <div class="card card-info">
-        <div class="card-header">
-        <h3 class="card-title">Line Chart</h3>
-        <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-        <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove">
-        <i class="fas fa-times"></i>
-        </button>
-        </div>
-        </div>
-        <div class="card-body">
-        <div class="chart">
-        {{-- <canvas id="chPercent" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> --}}
-        </div>
-        </div>
-        
-        </div>
-        
-        
-        <div class="card card-success">
-        <div class="card-header">
-        <h3 class="card-title">Bar Chart</h3>
-        <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-        <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove">
-        <i class="fas fa-times"></i>
-        </button>
-        </div>
-        </div>
-        <div class="card-body">
-        <div class="chart">
-        {{-- <canvas id="chPercent" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> --}}
-        </div>
-        </div>
-        
-        </div>
-        
-        
-        <div class="card card-success">
-        <div class="card-header">
-        <h3 class="card-title">Stacked Bar Chart</h3>
-        <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-        <i class="fas fa-minus"></i>
-        </button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove">
-        <i class="fas fa-times"></i>
-        </button>
-        </div>
-        </div>
-        <div class="card-body">
-        <div class="chart">
-        {{-- <canvas id="chPercent" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas> --}}
-        </div>
-        </div>
-        
-        </div>
-        
-        </div>
-        
-        </div>
-        
-        </div>
-        </section>
-        
-        {{-- </div> --}}
-        
-        
-        </div>
-
-
-
-    {{-- ================== --}}
+    foreach ($incidencias as $key => $value) {
+        if ($value->type_id) {
+            if (in_array ($value->created_at->format('m'), $t1)) {
+                    ($value->type_id==1)?$incit1++:$evast1++;
+            } elseif (in_array ($value->created_at->format('m'), $t2)) {
+                // $incit2++;
+                ($value->type_id==1)?$incit2++:$evast2++;
+            } elseif (in_array ($value->created_at->format('m'), $t3)) {
+                // $incit3++;
+                ($value->type_id==1)?$incit3++:$evast3++;
+            } else {
+                // $incit4++;
+                ($value->type_id==1)?$incit4++:$evast4++;
+            }
+        }
+    }
+    ?>
     
 
 @stop
@@ -377,5 +244,7 @@
 @stop
 
 @section('js')
-    <script defer src="{{url('/assets/js/chartjs.js')}}" data-cerradas="{{count($avSolved)+count($evaSolved)}}" data-pendientes="{{count($avPend)+count($evaPend)}}" data-averias="{{count($averias)}}" data-evaluaciones="{{count($evaluaciones)}}"></script>
+    <script defer src="{{url('/assets/js/chartjs.js')}}" data-t1="{{$incit1}}" data-t2="{{$incit2}}" data-t3="{{$incit3}}" data-t4="{{$incit4}}" data-t1b="{{$evast1}}" data-t2b="{{$evast2}}" data-t3b="{{$evast3}}" data-t4b="{{$evast4}}" data-cerradas="{{count($avSolved)+count($evaSolved)}}" data-pendientes="{{count($avPend)+count($evaPend)}}" data-averias="{{count($averias)}}" data-evaluaciones="{{count($evaluaciones)}}"></script>
+    <script defer src="{{url('/assets/js/barchart.js')}}" data-av="{{count($averias)}}" data-ev="{{count($evaluaciones)}}"></script>
+    {{-- <script defer src="{{url('/assets/js/barchart.js')}}" data-t1="{{$incit1}}" data-t2="{{$incit2}}" data-t3="{{$incit3}}" data-t4="{{$incit4}}" data-t1b="{{$evast1}}" data-t2b="{{$evast2}}" data-t3b="{{$evast3}}" data-t4b="{{$evast4}}"></script> --}}
 @stop

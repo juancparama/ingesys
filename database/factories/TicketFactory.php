@@ -17,6 +17,12 @@ class TicketFactory extends Factory
      */
     public function definition()
     {
+        $first_date = "2022-01-01 00:00:00";
+        $second_date = now();
+        $first_time = strtotime($first_date);
+        $second_time = strtotime($second_date);
+        $rand_time = rand($first_time, $second_time);
+        $rand_date = date('Y-m-d g:i:s', $rand_time);
 
         return [
             
@@ -31,6 +37,7 @@ class TicketFactory extends Factory
             'type_id'=>$this->faker->randomElement([null, 1, 2]), //Sin tipo, Avería, Evaluación
             'location_id'=>Location::all()->random()->id,
             'closed_at'=>$this->faker->randomElement([null, now()]),
+            'created_at'=>$rand_date,
         ];
     }
 }

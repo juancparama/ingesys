@@ -23,10 +23,13 @@ class TicketController extends Controller
         $misincidencias = Ticket::where('user_id', '=', $id)->get();
         $incidencias = Ticket::where('status', '!=', 0)->get();
 
+        $averias = Ticket::where('type_id', '=', 1)->get();
+        $evaluaciones = Ticket::where('type_id', '=', 2)->get();
+
         $avSolved = Ticket::where('type_id', '=', 1)->where('status', '=', 2)->get();
         $evaSolved = Ticket::where('type_id', '=', 2)->where('status', '=', 2)->get();
 
-        return view('ticket.index', compact('avSolved', 'evaSolved', 'incidencias', 'misincidencias'));
+        return view('ticket.index', compact('avSolved', 'evaSolved', 'incidencias', 'misincidencias', 'averias', 'evaluaciones'));
     }
 
     public function completadas()

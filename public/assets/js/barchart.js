@@ -1,57 +1,33 @@
-let incit1 = document.currentScript.getAttribute('data-t1');
-let incit2 = document.currentScript.getAttribute('data-t2');
-let incit3 = document.currentScript.getAttribute('data-t3');
-let incit4 = document.currentScript.getAttribute('data-t4');
-    //-------------
-    //- BAR CHART -
-    //-------------
+let avs = document.currentScript.getAttribute('data-av');
+let evas = document.currentScript.getAttribute('data-ev');
+const ctx = document.getElementById('chartTipo');
 
-    const barChartCanvas = document.getElementById('barChart');
-
-    let areaChartData = {
-      labels  : ['1T', '2T', '3T', '4T'],
-      datasets: [
-        {
-          label               : 'Incidencias',
-          backgroundColor     : 'rgba(60,141,188,0.9)',
-          borderColor         : 'rgba(60,141,188,0.8)',
-          pointRadius          : false,
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [incit1, incit2, incit3, incit4]
-        },
-        // {
-        //   label               : 'Averías',
-        //   backgroundColor     : 'rgba(210, 214, 222, 1)',
-        //   borderColor         : 'rgba(210, 214, 222, 1)',
-        //   pointRadius         : false,
-        //   pointColor          : 'rgba(210, 214, 222, 1)',
-        //   pointStrokeColor    : '#c1c7d1',
-        //   pointHighlightFill  : '#fff',
-        //   pointHighlightStroke: 'rgba(220,220,220,1)',
-        //   data                : [0, 0, 0, 0]
-        // },
-      ]
-    }
-
-
-    let barChartData = $.extend(true, {}, areaChartData)
-    let temp0 = areaChartData.datasets[0]
-    // let temp1 = areaChartData.datasets[1]
-    barChartData.datasets[0] = temp0
-    // barChartData.datasets[1] = temp1
-
-    
-    const barChartOptions = {
-      responsive              : true,
-      maintainAspectRatio     : false,
-      datasetFill             : false
-    }
-
-    new Chart(barChartCanvas, {
-      type: 'bar',
-      data: barChartData,
-      options: barChartOptions
-    })
+const chTipo = new Chart(ctx, {
+  type: 'bar',
+  data: {
+      labels: ['Avería', 'Evaluación'],
+      datasets: [{
+          label: 'Total',
+          data: [avs, evas],
+          backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+          ],
+          borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, },
+      scales: {
+          y: {
+              beginAtZero: true,
+          }
+      }
+  }
+  });

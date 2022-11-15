@@ -23,6 +23,7 @@ class AdminController extends Controller
      */
     public function index ()
     {
+        $incidencias = Ticket::where('status', '!=', 0)->get();
         $sinasignar = Ticket::where('status', '=', 0)->get();
         
         $averias = Ticket::where('type_id', '=', 1)->get();
@@ -33,7 +34,7 @@ class AdminController extends Controller
         $evaSolved = Ticket::where('type_id', '=', 2)->where('status', '=', 2)->get();
         $evaPend = Ticket::where('type_id', '=', 2)->where('status', '=', 1)->get();
 
-        return view('admin.index', compact('averias', 'evaluaciones', 'avSolved', 'avPend', 'evaSolved', 'evaPend', 'sinasignar'));
+        return view('admin.index', compact('incidencias', 'averias', 'evaluaciones', 'avSolved', 'avPend', 'evaSolved', 'evaPend', 'sinasignar'));
     }
 
     public function incidencias ()

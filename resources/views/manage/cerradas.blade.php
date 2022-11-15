@@ -58,7 +58,10 @@
                                             @endif
                                         </td> --}}
                             
-                                    <td><span class="d-block">{{$ticket->created_at->format('d/m/Y')}}</span></td>
+                                        
+                                    {{-- <td><span class="d-block">{{date ('d/m/Y', strtotime($ticket->closed_at))}}</span></td> --}}
+                                    <td><span class="d-block">{{\Carbon\Carbon::parse($ticket->closed_at)->format('d/m/Y')}}</span></td>
+                                    {{-- <td><span class="d-block">{{\Carbon\Carbon::parse($ticket->closed_at)->diffForHumans()}}</span></td> --}}
                                     <td class="p-2">
                                         <div class="d-flex">
                                             <a href="{{route('manage.show',$ticket->id)}}" type="button" class="d-flex justify-content-center align-items-center btn btn-sm btn-outline-secondary m-1 px-1">

@@ -81,6 +81,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(20)->create();
 
         \App\Models\Ticket::factory(200)->create();
+
+        $this->call(IncidenciasRemoveSeeder::class);
         
     }
 }
