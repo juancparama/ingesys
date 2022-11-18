@@ -14,7 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Crear permisos y roles
+        
         $this->call(RoleSeeder::class);
+
+        // Crear ubicaciones
 
         \App\Models\Location::factory()->create([
             'name' => 'Sala Gorfoli',
@@ -40,47 +44,48 @@ class DatabaseSeeder extends Seeder
             'name' => 'Otras zonas',
         ]);
 
-        // =========
+        // Crear usuarios
         
         \App\Models\User::factory()->create([
             'name' => 'admin',
-            'email' => 'admin@ingesys.com',
-            'password' => bcrypt('12345678'),
+            'email' => 'admin@ingesys.tk',
+            'password' => bcrypt('admin'),
         ])->assignRole('admin');
 
         \App\Models\User::factory()->create([
             'name' => 'mantenimiento',
-            'email' => 'mtto@ingesys.com',
-            'password' => bcrypt('12345678'),
+            'email' => 'mantenimiento@ingesys.tk',
+            'password' => bcrypt('mantenimiento'),
         ])->assignRole('mantenimiento');
 
         \App\Models\User::factory()->create([
             'name' => 'prevencion',
-            'email' => 'prevencion@ingesys.com',
-            'password' => bcrypt('12345678'),
+            'email' => 'prevencion@ingesys.tk',
+            'password' => bcrypt('prevencion'),
         ])->assignRole('prevencion');
 
         \App\Models\User::factory()->create([
-            'name' => 'Juan García 4',
-            'email' => 'juan@ingesys.com',
-            'password' => bcrypt('12345678'),
-        ])->assignRole('usuario');
-
-        \App\Models\User::factory()->create([
-            'name' => 'Ana López 5',
-            'email' => 'ana@ingesys.com',
-            'password' => bcrypt('12345678'),
-        ])->assignRole('usuario');
-
-        \App\Models\User::factory()->create([
             'name' => 'Juan C.',
-            'email' => 'juanc@ingesys.com',
-            'password' => bcrypt('12345678'),
+            'email' => 'juanc@ingesys.tk',
+            'password' => bcrypt('juanc'),
         ])->assignRole('usuario');
 
-        \App\Models\User::factory(20)->create();
+        \App\Models\User::factory()->create([
+            'name' => 'Ana López',
+            'email' => 'ana@ingesys.tk',
+            'password' => bcrypt('ana'),
+        ])->assignRole('usuario');
+
+        for ($i=0; $i < 20; $i++) { 
+            $user= \App\Models\User::factory()->create();
+            $user->assignRole('usuario');
+        }
+
+        // Crear incidencias
 
         \App\Models\Ticket::factory(200)->create();
+
+        // Eliminar incidencias que no cumplen requisitos
 
         $this->call(IncidenciasRemoveSeeder::class);
         

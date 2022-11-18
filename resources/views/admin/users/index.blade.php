@@ -2,7 +2,7 @@
 
 @section('plugins.Sweetalert2', true)
 
-@section('title', 'Incidencias asignadas')
+@section('title', 'Usuarios')
 
 @section('content')
 
@@ -44,6 +44,7 @@
             <th class="col-1">Id</th>
             <th data-priority="1">Nombre</th>
             <th class="col-2" data-priority="2">email</th>
+            <th class="col-2" data-priority="2">Rol</th>
             <th class="col-2" ata-priority="1">Acción</th>
         </tr>
     </thead>
@@ -51,22 +52,19 @@
     <tbody>
 
       @forelse($users as $key => $user)
+        
+        @if ($user->roles[0]->name=="admin")
+            <tr class="filaadmin">
+        @elseif (($user->roles[0]->name=="mantenimiento") || ($user->roles[0]->name=="prevencion"))
+            <tr class="filamanager">
+        @else
+            <tr>
+        @endif
 
-      <tr>
           <td><a class="fw-500 cursor-pointer">{{$user->id}}</a></td>
           <td>{{$user->name}}</td>
-
-          <td >
-            {{$user->email}}
-            {{-- @if ($user->type_id==1)
-                <span class="small px-2 badge bg-danger rounded-pill align-text-top">Avería</span>
-            @elseif ($user->type_id==2)
-                <span class="px-2 badge bg-info rounded-pill align-text-top">Evaluación</span>
-            @else
-                <span class="px-2 badge bg-secondary rounded-pill align-text-top">Sin asignar</span>
-            @endif --}}
-          </td>
-
+          <td>{{$user->email}}</td>
+          <td>{{$user->roles[0]->name}}</td>
           <td>
               <div class="d-flex">
                 <a href="{{route('user.edit',$user->id)}}" type="button" class="d-flex justify-content-center align-items-center btn btn-sm btn-outline-secondary m-1 px-1">
@@ -77,7 +75,7 @@
                     <span class="text-sm m-1">Editar</span>
                 </a>
 
-                <form action="{{route('user.destroy', $user->id)}}" method="POST" class="form-sa-delete">
+                <form action="{{route('user.destroy', $user->id)}}" method="POST" class="@if ($user->id!=1) form-sa-delete @endif">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="d-flex justify-content-center align-items-center btn btn-sm btn-outline-secondary m-1 p-2" @if ($user->id==1) disabled @endif">
@@ -88,14 +86,12 @@
                         <span class="text-sm ms-2 js-delete">Borrar</span>
                     </button>
                 </form>
-          </div>
-
-
+            </div>
           </td>
       </tr>
 
       @empty
-      <h2 class="text-center text-secondary p-4">Todavía no has creado ninguna incindencia.</h2>
+      <h2 class="text-center text-secondary p-4">No existe ningún usuario.</h2>
     @endforelse
       
     </tbody>
@@ -146,7 +142,7 @@
         order: [[0, 'asc']],
         "columnDefs": [ 
           {
-          "targets": 3,
+          "targets": [3,4],
           "orderable": false
           }
           ],

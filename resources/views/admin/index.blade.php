@@ -54,7 +54,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-info">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <h3 class="card-title"><strong>¡Atención!</strong></h3>
                                 <div class="card-tools">
@@ -69,7 +69,7 @@
                             <div class="card-body">
                                 <div class="chart">
                                     <p style="display: inline">Tienes un total de </p>
-                                    <h2 style="display: inline"><span class="badge bg-green">{{count($sinasignar)}}</span></h2>
+                                    <h3 style="display: inline"><span class="badge bg-gray">{{count($sinasignar)}}</span></h3>
                                     <p  style="display: inline"> incidencias pendientes de asignar. </p>
                                 </div>
                             </div>

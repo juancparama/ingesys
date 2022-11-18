@@ -35,7 +35,7 @@
                             </button>
                         </li>
                         <li class="mx-1">
-                            <form action="{{route('admin.destroy', $ticket->id)}}" method="POST" class="form-sa-delete">
+                            <form action="{{route('admin.destroy', $ticket->id)}}" method="POST" class="@if ($ticket->status!=2) form-sa-delete @endif">
                               @csrf
                               @method('DELETE')
                               <button type="submit" class="d-flex justify-content-center align-items-center btn btn-primary btn-sm" @if ($ticket->status==2) disabled @endif >

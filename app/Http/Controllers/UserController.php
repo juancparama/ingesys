@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -25,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('admin.users.create', compact("users"));
     }
 
     /**
@@ -36,7 +38,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        
+        $userData = ['name' => $request->name, 'email' => $request->email, 'password' => bcrypt($request->password), 'email_verified_at' => $request->email_verified_at,];
+
+        User::create($userData)->assignRole($request->rol);
+        return redirect(route('user.index'))->with(['message' => 'Usuario creado correctamente.', 'status' => 'success']);
     }
 
     /**
@@ -56,9 +67,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', compact('user'));
+        
     }
 
     /**
@@ -68,9 +80,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        $userData = ['name' => $request->name, 'password' => bcrypt($request->password)];
+        $user->update($userData);
+        return redirect()->route('user.index')->with(['message' => 'Usuario actualizada correctamente.', 'status' => 'success']);
+        
     }
 
     /**

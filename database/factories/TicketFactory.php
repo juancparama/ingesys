@@ -32,7 +32,7 @@ class TicketFactory extends Factory
             'status'=>$this->faker->randomElement([0, 1, 2]), //Pendiente, Asignada, Completada
 
             // 'user_id'=>User::all()->random()->id;
-            'user_id'=>$this->faker->numberBetween(4, 23),
+            'user_id'=>$this->faker->numberBetween(4, 25),
 
             'type_id'=>$this->faker->randomElement([null, 1, 2]), //Sin tipo, Avería, Evaluación
             'location_id'=>Location::all()->random()->id,

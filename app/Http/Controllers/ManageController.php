@@ -18,9 +18,11 @@ class ManageController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->id==2) {
+        // if (Auth::user()->id==2) {
+        if (Auth::user()->roles[0]->id==2) {
             $type=1;
-        } elseif (Auth::user()->id==3) {
+        // } elseif (Auth::user()->id==3) {
+        } elseif (Auth::user()->roles[0]->id==3) {
             $type=2;
         } else {
             $type=0;
@@ -32,9 +34,11 @@ class ManageController extends Controller
 
     public function cerradas()
     {
-        if (Auth::user()->id==2) {
+        // if (Auth::user()->id==2) {
+        if (Auth::user()->roles[0]->id==2) {
             $type=1;
-        } elseif (Auth::user()->id==3) {
+        // } elseif (Auth::user()->id==3) {
+        } elseif (Auth::user()->roles[0]->id==3) {
             $type=2;
         } else {
             $type=0;
