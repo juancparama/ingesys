@@ -45,7 +45,7 @@
             <th data-priority="1">Nombre</th>
             <th class="col-2" data-priority="2">email</th>
             <th class="col-2" data-priority="2">Rol</th>
-            <th class="col-2" ata-priority="1">Acción</th>
+            <th class="col-2" data-priority="1">Acción</th>
         </tr>
     </thead>
 
