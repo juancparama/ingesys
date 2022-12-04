@@ -60,21 +60,21 @@
 
                                 <!-- Password -->
                                 <div class="mt-4">
-                                    <x-input-label for="password" :value="__('Contraseña')" /><span class="ms-1 text-danger">*</span>
+                                    <x-input-label for="password" :value="__('Contraseña')" />
                     
                                     <x-text-input id="password" class="textinput textInput form-control"
                                                     type="password"
                                                     name="password"
-                                                    required autocomplete="new-password" />
+                                                    autocomplete="new-password" />
                                 </div>
                     
                                 <!-- Confirm Password -->
                                 <div class="mt-4">
-                                    <x-input-label for="password_confirmation" :value="__('Confirmar contraseña')" /><span class="ms-1 text-danger">*</span>
+                                    <x-input-label for="password_confirmation" :value="__('Confirmar contraseña')" />
                     
                                     <x-text-input id="password_confirmation" class="textinput textInput form-control"
                                                     type="password"
-                                                    name="password_confirmation" required />
+                                                    name="password_confirmation" />
                                 </div>
                     
                                 <div class="flex items-center justify-end mt-4">

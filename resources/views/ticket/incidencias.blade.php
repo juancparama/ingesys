@@ -77,12 +77,12 @@
                                             </td>
                                         </tr>
                                     @empty
-                                        <h2 class="text-center text-secondary p-4">Todavía no has creado ninguna incindencia.</h2>
+                                        <h2 class="text-center text-secondary p-4">Todavía no has creado ninguna incidencia.</h2>
                                     @endforelse
                                 </tbody>
                             </table>
                             @else
-                            <h2 class="text-center text-secondary p-4">Todavía no has creado ninguna incindencia.</h2>
+                            <h2 class="text-center text-secondary p-4">Todavía no has creado ninguna incidencia.</h2>
                             @endif
                         </div>
                     </div>

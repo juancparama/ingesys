@@ -50,56 +50,64 @@
                     <div class="card">
                         <div class="card-body">
 {{-- CONTENIDO --}}
-                            <table id="tabla" class="table " style="width:100%">
-                                
-                                <thead>
-                                    <tr>
-                                        <th class="col-1">Id</th>
-                                        <th>Título</th>
-                                        <th class="col-1">Tipo</th>
-                                        <th class="col-2">Creada</th>
-                                        <th class="col-1">Acción</th>
-                                    </tr>
-                                </thead>
 
-                                <tbody>
+    @if (count($tickets)>0)
 
-                                @forelse($tickets as $key => $ticket)
+            <table id="tabla" class="table " style="width:100%">
+                
+                <thead>
+                    <tr>
+                        <th class="col-1">Id</th>
+                        <th>Título</th>
+                        <th class="col-1">Tipo</th>
+                        <th class="col-2">Creada</th>
+                        <th class="col-1">Acción</th>
+                    </tr>
+                </thead>
 
-                                <tr style="vertical-align: middle;">
-                                    <td>{{$ticket->id}}</a></td>
-                                    <td>{{$ticket->title}}</td>
-                                    
-                                    <td class="h5">
-                                        @if ($ticket->type_id==1)
-                                            <span class="px-2 badge bg-danger rounded-pill align-text-top">Avería</span>
-                                        @elseif ($ticket->type_id==2)
-                                            <span class="px-2 badge bg-info rounded-pill align-text-top">Evaluación</span>
-                                        @else
-                                            <span class="px-2 badge bg-secondary rounded-pill align-text-top">Sin asignar</span>
-                                        @endif
-                                    </td>
+                <tbody>
 
-                                    <td>{{$ticket->created_at}}</span></td>
-                                    <td>
-                                        {{-- <div class="d-flex"> --}}
-                                            <a href="{{route('admin.show',$ticket->id)}}" type="button" class="d-flex justify-content-center align-items-center btn btn-sm btn-outline-secondary m-1 px-1">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path>
-                                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path>
-                                                </svg>
-                                                <span class="text-sm m-1">Ver</span>
-                                            </a>
-                                        {{-- </div> --}}
-                                    </td>
-                                </tr>
+                @forelse($tickets as $key => $ticket)
 
-                                @empty
-                                <h2 class="text-center text-secondary p-4">Ninguna incidencia resuelta</h2>
-                                @endforelse
-                                
-                                </tbody>
-                            </table>
+                <tr style="vertical-align: middle;">
+                    <td>{{$ticket->id}}</a></td>
+                    <td>{{$ticket->title}}</td>
+                    
+                    <td class="h5">
+                        @if ($ticket->type_id==1)
+                            <span class="px-2 badge bg-danger rounded-pill align-text-top">Avería</span>
+                        @elseif ($ticket->type_id==2)
+                            <span class="px-2 badge bg-info rounded-pill align-text-top">Evaluación</span>
+                        @else
+                            <span class="px-2 badge bg-secondary rounded-pill align-text-top">Sin asignar</span>
+                        @endif
+                    </td>
+
+                    <td>{{$ticket->created_at}}</span></td>
+                    <td>
+                        {{-- <div class="d-flex"> --}}
+                            <a href="{{route('admin.show',$ticket->id)}}" type="button" class="d-flex justify-content-center align-items-center btn btn-sm btn-outline-secondary m-1 px-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path>
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path>
+                                </svg>
+                                <span class="text-sm m-1">Ver</span>
+                            </a>
+                        {{-- </div> --}}
+                    </td>
+                </tr>
+
+                @empty
+                    <h2 class="text-center text-secondary p-4">Ninguna incidencia resuelta</h2>
+                @endforelse
+                
+                </tbody>
+            </table>
+    @else
+        <h2 class="text-center text-secondary p-4">Ninguna incidencia pendiente</h2>
+    @endif
+
+
 {{-- CONTENIDO --}}
                         </div>
                     </div>

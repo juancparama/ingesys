@@ -82,11 +82,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-        $userData = ['name' => $request->name, 'password' => bcrypt($request->password)];
+        if ($request->password) {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                ]);
+            $userData = ['name' => $request->name, 'password' => bcrypt($request->password)];
+        } else {
+                $request->validate([
+                    'name' => ['required', 'string', 'max:255'],
+                    ]);
+                $userData = ['name' => $request->name];
+            }
+        
         $user->update($userData);
         return redirect()->route('user.index')->with(['message' => 'Usuario actualizada correctamente.', 'status' => 'success']);
         

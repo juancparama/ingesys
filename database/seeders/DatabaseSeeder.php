@@ -33,6 +33,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Location::factory()->create([
+            'name' => 'Sala Torrecerredo',
+        ]);
+
+        \App\Models\Location::factory()->create([
             'name' => 'Zonas comunes',
         ]);
 
@@ -64,17 +68,17 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('prevencion'),
         ])->assignRole('prevencion');
 
-        \App\Models\User::factory()->create([
-            'name' => 'Juan C.',
-            'email' => 'juanc@ingesys.tk',
-            'password' => bcrypt('juanc'),
-        ])->assignRole('usuario');
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Juan C.',
+        //     'email' => 'juanc@ingesys.tk',
+        //     'password' => bcrypt('juanc'),
+        // ])->assignRole('usuario');
 
-        \App\Models\User::factory()->create([
-            'name' => 'Ana López',
-            'email' => 'ana@ingesys.tk',
-            'password' => bcrypt('ana'),
-        ])->assignRole('usuario');
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Ana López',
+        //     'email' => 'ana@ingesys.tk',
+        //     'password' => bcrypt('ana'),
+        // ])->assignRole('usuario');
 
         for ($i=0; $i < 20; $i++) { 
             $user= \App\Models\User::factory()->create();
@@ -83,7 +87,7 @@ class DatabaseSeeder extends Seeder
 
         // Crear incidencias
 
-        \App\Models\Ticket::factory(200)->create();
+        // \App\Models\Ticket::factory(200)->create();
 
         // Eliminar incidencias que no cumplen requisitos
 
