@@ -8,12 +8,12 @@
 
 ## :page_facing_up: Acerca de
 
-Aplicación web creada para el módulo Proyecto de desarrollo de aplicaciones web del ciclo formativo de grado superior Desarrollo de Aplicaciones Web impartido en el CIFP de Avilés.
+Aplicación web creada para el módulo Proyecto de Desarrollo de Aplicaciones Web del ciclo formativo de grado superior Desarrollo de Aplicaciones Web impartido en el [CIFP de Avilés](https://www.cifpaviles.net/).
 
 La aplicación web consiste en un sistema de gestión de incidencias relacionadas
 con el ámbito de la Seguridad y Salud.
 
-El sistema ha sido desarrollado mediante el framework web de PHP Laravel.
+El sistema ha sido desarrollado mediante el framework web de PHP [Laravel](https://laravel.com/).
 
 ## :rocket: Instalación
 
@@ -28,4 +28,3 @@ Juan C. Paramá - [@juancparama](https://github.com/juancparama)
 ## :mailbox: Soporte
 
 Escríbeme a juancpc19@educastur.es
-
