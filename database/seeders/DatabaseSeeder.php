@@ -18,37 +18,13 @@ class DatabaseSeeder extends Seeder
         
         $this->call(RoleSeeder::class);
 
-        // Crear ubicaciones
-
-        \App\Models\Location::factory()->create([
-            'name' => 'Sala Gorfoli',
-        ]);
-        
-        \App\Models\Location::factory()->create([
-            'name' => 'Sala Urriellu',
-        ]);
-
-        \App\Models\Location::factory()->create([
-            'name' => 'Sala Pienzu',
-        ]);
-
-        \App\Models\Location::factory()->create([
-            'name' => 'Sala Torrecerredo',
-        ]);
-
+        // Crear ubicación por defecto
+ 
         \App\Models\Location::factory()->create([
             'name' => 'Zonas comunes',
         ]);
 
-        \App\Models\Location::factory()->create([
-            'name' => 'Aseos',
-        ]);
-        
-        \App\Models\Location::factory()->create([
-            'name' => 'Otras zonas',
-        ]);
-
-        // Crear usuarios
+        // Crear usuarios por defecto
         
         \App\Models\User::factory()->create([
             'name' => 'admin',
@@ -68,30 +44,66 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('prevencion'),
         ])->assignRole('prevencion');
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Juan C.',
-        //     'email' => 'juanc@ingesys.tk',
-        //     'password' => bcrypt('juanc'),
-        // ])->assignRole('usuario');
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Ana López',
-        //     'email' => 'ana@ingesys.tk',
-        //     'password' => bcrypt('ana'),
-        // ])->assignRole('usuario');
+        // Generación de datos aleatorios
+        // Descomentar todo este bloque para generar incidencias, usuarios y ubicaciones automáticas
 
-        for ($i=0; $i < 20; $i++) { 
-            $user= \App\Models\User::factory()->create();
-            $user->assignRole('usuario');
-        }
+            // Crear ubicaciones
 
-        // Crear incidencias
+            // \App\Models\Location::factory()->create([
+            //     'name' => 'Sala Gorfoli',
+            // ]);
+            
+            // \App\Models\Location::factory()->create([
+            //     'name' => 'Sala Urriellu',
+            // ]);
 
-        // \App\Models\Ticket::factory(200)->create();
+            // \App\Models\Location::factory()->create([
+            //     'name' => 'Sala Pienzu',
+            // ]);
 
-        // Eliminar incidencias que no cumplen requisitos
+            // \App\Models\Location::factory()->create([
+            //     'name' => 'Sala Torrecerredo',
+            // ]);
+            
+            // \App\Models\Location::factory()->create([
+            //     'name' => 'Aseos',
+            // ]);
+            
+            // \App\Models\Location::factory()->create([
+            //     'name' => 'Otras zonas',
+            // ]);
 
-        $this->call(IncidenciasRemoveSeeder::class);
+            
+            // Crear usuarios empleados
+
+            // \App\Models\User::factory()->create([
+            //     'name' => 'Juan C.',
+            //     'email' => 'juanc@ingesys.tk',
+            //     'password' => bcrypt('juanc'),
+            // ])->assignRole('usuario');
+
+            // \App\Models\User::factory()->create([
+            //     'name' => 'Ana López',
+            //     'email' => 'ana@ingesys.tk',
+            //     'password' => bcrypt('ana'),
+            // ])->assignRole('usuario');
+
+            // for ($i=0; $i < 20; $i++) { 
+            //     $user= \App\Models\User::factory()->create();
+            //     $user->assignRole('usuario');
+            // }
+
+
+            // Crear incidencias
+
+            // \App\Models\Ticket::factory(200)->create();
+
+            // Eliminar incidencias que no cumplen requisitos
+
+            // $this->call(IncidenciasRemoveSeeder::class);
+
+        // FIN bloque generación automática de datos
         
     }
 }

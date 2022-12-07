@@ -47,7 +47,7 @@
                                             <div id="div_id_name" class="mb-3">
                                                 <label for="id_title" class="form-label d-block my-0 fw-700"> Título<span class="ms-1 text-danger">*</span></label>
                                                 {{-- <small id="hint_id_title" class="form-text text-muted d-block my-0 mn"><em>This field will be shown on the tab title, and will appear in search result title.</em></small> --}}
-                                                <input type="text" name="title" id="title" maxlength="45" class="textinput textInput form-control @error('title') is-invalid @enderror" placeholder="Título" value="{{ old('title') }}">
+                                                <input type="text" name="title" id="title" maxlength="45" required class="textinput textInput form-control @error('title') is-invalid @enderror" placeholder="Título" value="{{ old('title') }}">
                                                 @error('title')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror

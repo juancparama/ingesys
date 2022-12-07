@@ -56,7 +56,7 @@
 
       <tr>
           <td><a class="fw-500 cursor-pointer">{{$location->id}}</a></td>
-          <td>{{$location->name}} {{count($locations)}}</td>
+          <td>{{$location->name}}</td>
 
           <td>
               <div class="d-flex">
