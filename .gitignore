@@ -14,3 +14,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/database/seeders/DatabaseSeederDO.php
+/database/seeders/IncidenciasRemoveSeederDO.php

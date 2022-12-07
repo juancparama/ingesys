@@ -12,13 +12,13 @@ use Tests\TestCase;
 
 class EmailVerificationTest extends TestCase
 {
-    use RefreshDatabase;
+    // use RefreshDatabase;
 
     public function test_email_verification_screen_can_be_rendered()
     {
         $user = User::factory()->create([
             'email_verified_at' => null,
-        ]);
+        ])->assignRole('usuario');
 
         $response = $this->actingAs($user)->get('/verify-email');
 
@@ -29,7 +29,7 @@ class EmailVerificationTest extends TestCase
     {
         $user = User::factory()->create([
             'email_verified_at' => null,
-        ]);
+        ])->assignRole('usuario');
 
         Event::fake();
 
@@ -50,7 +50,7 @@ class EmailVerificationTest extends TestCase
     {
         $user = User::factory()->create([
             'email_verified_at' => null,
-        ]);
+        ])->assignRole('usuario');
 
         $verificationUrl = URL::temporarySignedRoute(
             'verification.verify',
