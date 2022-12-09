@@ -55,7 +55,7 @@
                                         <div class="col-12">
                                             <div id="div_id_name" class="mb-3">
                                                 <label for="id_title" class="form-label d-block my-0 fw-700"> Título<span class="ms-1 text-danger">*</span></label>
-                                                <small id="hint_id_title" class="form-text text-muted d-block my-0 mn"><em>This field will be shown on the tab title, and will appear in search result title.</em></small>
+                                                <small id="hint_id_title" class="form-text text-muted d-block my-0 mn"><em>Introduce el título de la incidencia.</em></small>
                                                 <input type="text" name="title" id="title" maxlength="45" class="textinput textInput form-control @error('title') is-invalid @enderror" placeholder="Título" value="{{ $ticket->title }}" >
                                                 @error('title')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -68,7 +68,7 @@
                 
                                 <fieldset>
                                     <label for="id_description" class="form-label d-block m-0 fw-700"> Descripción </label>
-                                    <small id="hint_id_description" class="form-text text-muted my-3"><em>Introduce una descripción de la incidencia.</em></small>
+                                    <small id="hint_id_description" class="form-text text-muted "><em>Introduce una descripción de la incidencia.</em></small>
                                     <div class="row">
                                         <div class="col-12">
                                             <textarea name="description" id="description" rows="6" class="textinput textInput form-control @error('description') is-invalid @enderror" placeholder="Descripción">{{ $ticket->description }}</textarea>
@@ -83,9 +83,8 @@
                                 <fieldset>
                                     <div class="row ">
                                         <div class="col-12">
-                                            <div id="div_id_lctn" class="mb-3">
+                                            <div id="div_id_lctn" class="my-3">
                                                 <label for="id_location_id" class="form-label d-block my-0 fw-700"> Ubicación<span class="ms-1 text-danger">*</span></label>
-                                                <small id="hint_id_location_id" class="form-text text-muted d-block my-0 mn"><em>This field will be shown on the tab title, and will appear in search result title.</em></small>
                                                 <select name="location_id" id="location_id">
                                                     @foreach ($locations as $location)
                                                         <option value="{{$location->id}}" @if ($location->id==$ticket->location_id) selected @endif>{{$location->name}}</option>
