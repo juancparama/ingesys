@@ -15,11 +15,11 @@ con el ámbito de la Seguridad y Salud.
 
 El sistema ha sido desarrollado mediante el framework web de PHP [Laravel](https://laravel.com/).
 
-## :rocket: Instalación
+## :rocket: Instalación y uso
 
-Para información acerca de la instalación, visita la página del wiki:
+Para información acerca de la instalación y uso visita la página del wiki:
 
-- **[Instalación](https://github.com/juancparama/ingesys/wiki/Inicio)**
+- **[Instalación y uso](https://github.com/juancparama/ingesys/wiki/Inicio)**
 
 ## :technologist: Autor
 
